@@ -14,4 +14,6 @@ import Footer from '@/components/Footer.vue'
     </div>
 </template>
 <style scoped lang="sass">
+.container 
+    min-height: 100vh
 </style>
