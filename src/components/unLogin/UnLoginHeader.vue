@@ -1,9 +1,15 @@
-<script setup>
+<script>
+export default {
+    props: {
+        button: String,
+        path: String,
+    }
+}
 </script>
 <template>
     <header class="header">
         <img src="@/assets/logo.svg" alt="Znakomstva.com" class="header__logo">
-        <RouterLink :to="{ name: 'sign-up' }" class="header__button">Регистрация</RouterLink>
+        <RouterLink :to="{ name: path }" class="header__button">{{ button }}</RouterLink>
     </header>
 </template>
 <style scoped lang="sass">

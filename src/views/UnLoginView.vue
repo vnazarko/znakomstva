@@ -9,7 +9,11 @@ import Footer from '@/components/Footer.vue'
 import { spline } from "https://cdn.skypack.dev/@georgedoescode/spline@1.0.1";
 import SimplexNoise from "https://cdn.skypack.dev/simplex-noise@2.4.0";
 
-alert("Данный сайт тестовый, поэтому можо писать абсолютно любые данные, они ни на что не влияют :)")
+let prom = new Promise(() => {
+    setTimeout(() => {
+        alert("Данный сайт тестовый, поэтому можо писать абсолютно любые данные, они ни на что не влияют :)")
+    }, 1000)
+})
 
 onMounted(() => {
     const path = document.querySelector("path");
@@ -106,8 +110,8 @@ onMounted(() => {
         <path d="" fill="url('#gradient')"></path>
     </svg>
     <div class="container">
-        <UnLoginHeader />
-        <UnLoginTitle />
+        <UnLoginHeader button="Регистрация" path="sign-up"/>
+        <UnLoginTitle title="Знакомства без преград" subtitle="Для современного мира сплочённость команды профессионалов однозначно фиксирует необходимость системы обучения кадров, соответствующей насущным потребностям." />
         <LoginForm />
         <Footer />
     </div>
@@ -118,6 +122,7 @@ body
 
 .container 
     min-height: 100vh
+    overflow: hidden
 svg 
     position: absolute
     width: 95vmin

@@ -1,12 +1,17 @@
 <template>
   <section class="unlogin-title">
-    <span>Знакомства без преград</span>
-    Для современного мира сплочённость команды профессионалов однозначно фиксирует необходимость системы обучения кадров, соответствующей насущным потребностям.
+    <span>{{ title }}</span>
+    {{ subtitle }}
   </section>
 </template>
 
-<script setup>
-
+<script>
+export default {
+  props: {
+    title: String,
+    subtitle: String,
+  }
+}
 </script>
 
 <style scoped lang="sass">
