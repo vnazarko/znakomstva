@@ -1,3 +1,7 @@
+<script setup>
+import { useUserStore } from '@/stores/user';
+
+</script>
 <template>
-    1
+    gcgc
 </template>

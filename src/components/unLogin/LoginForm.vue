@@ -62,7 +62,13 @@ function toggleStyleButton() {
 }
 
 function changeInfo() {
-  user.changeInfo(email, password)
+  localStorage.setItem("email", email.value)
+  localStorage.setItem("password", password.value)
+
+  let localEmail = localStorage.getItem("email")
+  let localPassword = localStorage.getItem("password")
+
+  user.changeInfo(localEmail, localPassword) 
 } 
 
 </script>

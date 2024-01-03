@@ -3,8 +3,8 @@ import { defineStore } from 'pinia'
 export const useUserStore = defineStore('user', {
   state: () => ({
     info: {
-      email: '',
-      password: '',
+      email: 'example@gmail.com',
+      password: 'hvhj',
     }
   }),
   actions:  {
@@ -12,6 +12,6 @@ export const useUserStore = defineStore('user', {
       this.info.email = email
       this.info.password = password
     }
-  }
+  },
 })
 // npm i pinia @pinia/nuxt
