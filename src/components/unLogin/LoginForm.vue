@@ -1,16 +1,23 @@
 <template>
   <form class="login-form" @input="toggleStyleButton">
-    <input type="text" class="login-form__input" placeholder="Введите электронную почту" v-model="email" id="email" @blur="validateEmail">
-    <div class="login-form__pass">
+    <input data-aos="fade-right" data-aos-duration="1000" type="text" class="login-form__input" placeholder="Введите электронную почту" v-model="email" id="email" @blur="validateEmail">
+    <div data-aos="fade-left" data-aos-duration="1000" class="login-form__pass">
       <input type="password" class="login-form__input" id="password" placeholder="Введите пароль">
       <div @click="togglePassword" class="login-form__toggle-pass"></div>
     </div>
-    <RouterLink class="login-form__button" @click="changeInfo" :to="{ name: 'list' }" inert>Войти</RouterLink>
+    <RouterLink data-aos="fade-up" data-aos-duration="1000" class="login-form__button" @click="changeInfo" :to="{ name: 'list' }" inert>Войти</RouterLink>
   </form>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+onMounted(() => {
+  AOS.init();
+})
 
 import { useUserStore } from '@/stores/user';
 
@@ -18,6 +25,7 @@ const user = useUserStore();
 
 let email = ref('');
 let password = ref('');
+
 
 function validateEmail() {
   const emailInput = document.getElementById("email");

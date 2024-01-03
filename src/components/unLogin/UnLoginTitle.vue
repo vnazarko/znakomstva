@@ -1,15 +1,21 @@
 <template>
-  <section class="unlogin-title">
-    <span>{{ title }}</span>
+  <section class="unlogin-title" data-aos="fade-top" data-aos-duration="1500">
+    <span data-aos="fade-top" data-aos-duration="1000">{{ title }}</span>
     {{ subtitle }}
   </section>
 </template>
 
 <script>
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default {
   props: {
     title: String,
     subtitle: String,
+  },
+  mounted() {
+    AOS.init()
   }
 }
 </script>

@@ -1,15 +1,21 @@
 <script>
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default {
     props: {
         button: String,
         path: String,
+    },
+    mounted() {
+        AOS.init()
     }
 }
 </script>
 <template>
     <header class="header">
-        <img src="@/assets/logo.svg" alt="Znakomstva.com" class="header__logo">
-        <RouterLink :to="{ name: path }" class="header__button">{{ button }}</RouterLink>
+        <img data-aos="fade-right" data-aos-duration="1000" src="@/assets/logo.svg" alt="Znakomstva.com" class="header__logo">
+        <RouterLink data-aos="fade-left" data-aos-duration="1000" :to="{ name: path }" class="header__button">{{ button }}</RouterLink>
     </header>
 </template>
 <style scoped lang="sass">

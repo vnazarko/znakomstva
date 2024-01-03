@@ -1,5 +1,12 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+onMounted(() => {
+  AOS.init()
+})
 
 import { useUserStore } from '@/stores/user';
 
@@ -61,14 +68,14 @@ function changeInfo() {
 } 
 </script>
 <template>
-    <h1 class="signup-form__title">Создай новый аккаунт</h1>
-    <h2 class="signup-form__subtitle">Присоединяйся к сообществу из 518 млн человек!</h2>
+    <h1 class="signup-form__title" data-aos="fade-up" data-aos-duration="1000">Создай новый аккаунт</h1>
+    <h2 class="signup-form__subtitle" data-aos="fade-up" data-aos-duration="1500">Присоединяйся к сообществу из 518 млн человек!</h2>
     <form class="signup-form" @input="toggleStyleButton">
-        <input type="text" class="signup-form__input" id="user" placeholder="Ваше имя">
+        <input type="text" class="signup-form__input" id="user" placeholder="Ваше имя" data-aos="fade-left" data-aos-duration="1000">
         <label for="#date" style="margin-bottom: 100px">Дата рождения</label>
         <div class="signup-form__date" id="date" style="display: flex; justify-content: center; gap: 5px">
-            <input type="text" class="signup-form__input" style="width: 100px; background-image: none; padding-left: 31px" placeholder="День" maxlength="2">
-            <select type="text" class="signup-form__input" style="background-image: url('/src/assets/icons/arrowSelect.svg'); background-position: 132px center; padding-left: 31px; appearance: none;">
+            <input type="text" class="signup-form__input" style="width: 100px; background-image: none; padding-left: 31px" placeholder="День" maxlength="2" data-aos="fade-up-left" data-aos-duration="1600">
+            <select type="text" class="signup-form__input" style="background-image: url('/src/assets/icons/arrowSelect.svg'); background-position: 132px center; padding-left: 31px; appearance: none;" data-aos="fade-up" data-aos-duration="1800">
                 <option value="" style="color: #8B5D9A">Месяц</option>
                 <option value="Январь">Январь</option>
                 <option value="Февраль">Февраль</option>
@@ -83,28 +90,28 @@ function changeInfo() {
                 <option value="Ноябрь">Ноябрь</option>
                 <option value="Декабрь">Декабрь</option>
             </select>
-            <input type="text" class="signup-form__input" style="width: 100px; background-image: none; padding-left: 31px" placeholder="Год" maxlength="4">
+            <input type="text" class="signup-form__input" style="width: 100px; background-image: none; padding-left: 31px" placeholder="Год" maxlength="4" data-aos="fade-up-right" data-aos-duration="2000">
         </div>
         <div class="signup-form__gender">
-            <div class="gender  man">
+            <div class="gender  man" data-aos="fade-right" data-aos-duration="2200">
                 <input type="radio" name="gender" class="signup-form__radio" id="man">
                 <label for="man" class="signup-form_label label1">
                     <img src="@/assets/icons/man.svg" alt="Мужчина" class="signup-form_label__icon">
                 </label>
             </div>
-            <div class="gender  woman">
+            <div class="gender  woman" data-aos="fade-left" data-aos-duration="2200">
                 <input type="radio" name="gender" class="signup-form__radio" id="woman">
                 <label for="woman" class="signup-form_label label2">
                     <img src="@/assets/icons/woman.svg" alt="Мужчина" class="signup-form_label__icon">
                 </label>
             </div>
         </div>
-        <input type="text" class="signup-form__input" placeholder="Введите электронную почту" v-model="email" id="email" @blur="validateEmail">
-        <div class="signup-form__pass">
+        <input data-aos="fade-left" data-aos-duration="1500" type="text" class="signup-form__input" placeholder="Введите электронную почту" v-model="email" id="email" @blur="validateEmail">
+        <div data-aos="fade-right" data-aos-duration="1500" class="signup-form__pass">
           <input type="password" class="signup-form__input" id="password" placeholder="Введите пароль">
           <div @click="togglePassword" class="signup-form__toggle-pass"></div>
         </div>
-        <RouterLink class="signup-form__button" @click="changeInfo" :to="{ name: 'list' }" inert>Создать аккаунт</RouterLink>
+        <RouterLink data-aos="fade-up" data-aos-duration="1500" class="signup-form__button" @click="changeInfo" :to="{ name: 'list' }" inert>Создать аккаунт</RouterLink>
     </form>
 </template>
 <style sciped lang="sass">
