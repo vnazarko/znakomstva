@@ -22,7 +22,7 @@ function toggleBurger() {
     <header class="header">
         <img src="@/assets/logo.svg" alt="" class="logo">
         <nav class="header_nav">
-            <router-link to="/" class="header_nav__link">Анкеты</router-link>
+            <router-link :to="{ name: 'list' }" class="header_nav__link">Анкеты</router-link>
             <router-link to="/" class="header_nav__link">Сообщения</router-link>
             <router-link to="/" class="header_nav__link">Подписка</router-link>
         </nav>
@@ -122,6 +122,7 @@ function toggleBurger() {
     .burger-menu
         display: block
         margin-top: 22px
+        z-index: 10
         &__button
             width: 25px
             height: 25px

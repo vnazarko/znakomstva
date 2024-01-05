@@ -1,5 +1,6 @@
 <script setup>
 import Header from '@/components/Loggedin/Header.vue'
+import ListOfUsers from '@/components/Loggedin/ListOfUsers.vue';
 import Footer from '@/components/Footer.vue'
 
 </script>
@@ -8,6 +9,7 @@ import Footer from '@/components/Footer.vue'
         <div class="bgHeader"></div>
         <div class="container">
             <Header />
+            <ListOfUsers />
             <Footer />
         </div>
     </div>
