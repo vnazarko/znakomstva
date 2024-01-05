@@ -3,14 +3,23 @@ import { defineStore } from 'pinia'
 export const useUserStore = defineStore('user', {
   state: () => ({
     info: {
-      email: 'example@gmail.com',
-      password: 'hvhj',
+      email: '',
+      password: '12345678',
+      logo: '/src/assets/img/user/logo.png',
+      name: 'Ваня Факов',
+      date: '11.11.1111',
+      gender: 'Мужчина'
     }
   }),
   actions:  {
-    changeInfo(email, password) {
+    changeName(name) {
+      this.info.name = name
+    },
+    changeEmail(email) {
       this.info.email = email
-      this.info.password = password
+    },
+    changeGender(gender) {
+      this.info.gender = gender
     }
   },
 })

@@ -14,6 +14,9 @@ const user = useUserStore();
 
 let email = ref('');
 let password = ref('');
+let name = ref('');
+let gender = ref('');
+
 
 function validateEmail() {
   const emailInput = document.getElementById("email");
@@ -60,18 +63,15 @@ function toggleStyleButton() {
 function changeInfo() {
   localStorage.setItem("email", email.value)
   localStorage.setItem("password", password.value)
-
-  let localEmail = localStorage.getItem("email")
-  let localPassword = localStorage.getItem("password")
-
-  user.changeInfo(localEmail, localPassword) 
+  localStorage.setItem("name", name.value)
+  localStorage.setItem("gender", gender.value)
 } 
 </script>
 <template>
     <h1 class="signup-form__title" data-aos="fade-up" data-aos-duration="1000">Создай новый аккаунт</h1>
     <h2 class="signup-form__subtitle" data-aos="fade-up" data-aos-duration="1500">Присоединяйся к сообществу из 518 млн человек!</h2>
     <form class="signup-form" @input="toggleStyleButton">
-        <input type="text" class="signup-form__input" id="user" placeholder="Ваше имя" data-aos="fade-left" data-aos-duration="1000">
+        <input type="text" class="signup-form__input" id="user" placeholder="Ваше имя" data-aos="fade-left" data-aos-duration="1000" v-model="name">
         <label for="#date" style="margin-bottom: 100px">Дата рождения</label>
         <div class="signup-form__date" id="date" style="display: flex; justify-content: center; gap: 5px">
             <input type="text" class="signup-form__input" style="width: 100px; background-image: none; padding-left: 31px" placeholder="День" maxlength="2" data-aos="fade-up-left" data-aos-duration="1600">
@@ -94,13 +94,13 @@ function changeInfo() {
         </div>
         <div class="signup-form__gender">
             <div class="gender  man" data-aos="fade-right" data-aos-duration="2200">
-                <input type="radio" name="gender" class="signup-form__radio" id="man">
+                <input type="radio" name="gender" class="signup-form__radio" id="man" value="Мужчина" v-model="gender">
                 <label for="man" class="signup-form_label label1">
                     <img src="@/assets/icons/man.svg" alt="Мужчина" class="signup-form_label__icon">
                 </label>
             </div>
             <div class="gender  woman" data-aos="fade-left" data-aos-duration="2200">
-                <input type="radio" name="gender" class="signup-form__radio" id="woman">
+                <input type="radio" name="gender" class="signup-form__radio" id="woman" value="Женщины" v-model="gender">
                 <label for="woman" class="signup-form_label label2">
                     <img src="@/assets/icons/woman.svg" alt="Мужчина" class="signup-form_label__icon">
                 </label>
