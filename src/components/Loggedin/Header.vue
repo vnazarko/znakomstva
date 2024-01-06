@@ -51,6 +51,7 @@ function toggleBurger() {
     display: flex
     flex-direction: row
     justify-content: space-between
+    z-index: 10
 
 .logo
     margin-top: 30px

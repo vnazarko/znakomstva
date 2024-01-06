@@ -46,6 +46,8 @@ function openMessage() {
     gap: 10px
     flex-direction: column
     z-index: 100
+    flex-wrap: wrap
+    width: 300px
 
 .hello-message
     animation: message 7s 
@@ -64,7 +66,7 @@ function openMessage() {
         border-radius: 6px
         position: relative
         top: 14px
-        animation: progressBar 6.5s
+        animation: progressBar 6.4s
     .hello-message_content
         opacity: 1
         color: #FFF

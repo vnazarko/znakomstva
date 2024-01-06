@@ -28,10 +28,9 @@ const user = store.users[id - 1]
         </div>
     </div>
 </template>
-<style lang="sass" scoped>
+<style lang="sass">
 .container 
     max-height: 100vh
-    overflow: hidden
 .bgHeader
     position: absolute
     left: 0
@@ -40,7 +39,27 @@ const user = store.users[id - 1]
     height: 120px
     width: 100vw
 
+.burger-menu_content
+    width: 100vw
+    position: absolute
+
+.burger-menu_content__link:first-child
+    color: #FE6703
+    font-family: Rubik
+    font-style: normal
+    line-height: 150%
+    position: relative
+    &::before 
+        position: absolute
+        left: 100%
+        content: ''
+        height: 100% !important
+        width: 4px !important
+        background: var(--btn-primary, linear-gradient(90deg, #EE0979 0%, #FF6A00 100%))
+
 @media (max-width: 768px)
+    .container
+        max-height: 170vh   
     .bgHeader
         height: 70px
     .header_nav__link:first-child::before

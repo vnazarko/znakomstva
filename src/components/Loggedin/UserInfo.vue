@@ -134,4 +134,21 @@ export default {
             opacity: 1
             transition: all .3s
 
+@media (max-width: 1024px)
+    .opened 
+        height: 340px !important
+
+@media (max-width: 768px) 
+    .user 
+        flex-direction: column
+    .user__img
+        width: 100%
+        height: 600px
+    .user_info
+        width: 100%
+    .opened
+        height: 220px !important
+@media (max-width: 560px)
+    .opened
+        height: 340px !important
 </style>
