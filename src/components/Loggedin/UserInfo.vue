@@ -3,17 +3,28 @@ export default {
     props: {
         img: Object,
         title: String,
+        id: String,
         charachteristic: Array,
         description: String,
+        likeMethod: String,
+        name: String,
     },
-    setup() {
+    setup(props) {
+        let trueName = props.name.split(' ');
+
         function openDescription() {
             let content = document.querySelector('.user_info_description_info')
             content.classList.toggle('opened')
         }
 
+        function addLike() {
+            props.likeMethod()
+        }
+
         return {
-            openDescription
+            openDescription,
+            addLike,
+            trueName
         }
     }
 }
@@ -23,7 +34,7 @@ export default {
         <img :src="img.default" class="user__img">
         <div class="user_info">
             <h1 class="user_info__title">{{ title }}</h1>
-            <HelloButton />
+            <HelloButton :id="id" :name="trueName[0]" :likeMethod="likeMethod"/>
             <div class="user_info_charachteristic">
                 <div class="user_info_charachteristic_item" v-for="(item, index) in charachteristic" :key="index">
                     <div class="user_info_charachteristic_item__value">{{ item.name }}</div>

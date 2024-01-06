@@ -1,25 +1,48 @@
 <template>
-    <div class="button" @click="openMessage">Поприветствовать <img src="@/assets/icons/hand.svg"></div>
+    <div class="button" @click="buttonFunction">Поприветствовать <img src="@/assets/icons/hand.svg"></div>
     <div class="hello-message-container">
         <div class="hello-message" v-for="(mes, index) in openedMessage" :key="index">
             <div class="hello-message_content">
-                Кнопочка не рабочая)
+                Вы поприветствовали пользователя {{ name }}
             </div>
             <div class="hello-message__progressbar"></div>
         </div>
     </div>
 </template>
-<script setup>
-import { ref } from 'vue'
+<script>
+import { onMounted, ref } from 'vue'
 
-let openedMessage = ref(0)
+export default {
+    props: {
+        id: String,
+        name: String,
+        likeMethod: Function,
+    },
+    setup(props) {
+        let openedMessage = ref(0)
+        function openMessage() {
+            ++openedMessage.value
+        
+            setTimeout(() => {
+                --openedMessage.value
+            }, 7000)
+        }
 
-function openMessage() {
-    ++openedMessage.value
 
-    setTimeout(() => {
-        --openedMessage.value
-    }, 7000)
+        function addLike() {
+            props.likeMethod()
+        }
+
+        function buttonFunction() {
+            openMessage()
+            addLike()
+        }
+
+        return {
+            openedMessage,
+            buttonFunction,
+        }
+    }
 }
 </script>
 <style scoped lang="sass">
@@ -40,7 +63,7 @@ function openMessage() {
 
 .hello-message-container
     position: fixed !important
-    right: 10px !important
+    right: 100px !important
     bottom: 10px !important
     display: flex
     gap: 10px
@@ -52,7 +75,7 @@ function openMessage() {
 .hello-message
     animation: message 7s 
     height: 60px
-    width: 300px
+    width: 400px
     display: flex
     justify-content: center
     align-items: center

@@ -23,8 +23,7 @@ import Footer from '@/components/Footer.vue'
     height: 120px
     width: 100vw
 .container
-    height: 1657px
-
+    height: 1657px !important
 .header_nav
     &__link:first-child 
         color: #FE6703

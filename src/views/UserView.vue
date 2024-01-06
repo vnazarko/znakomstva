@@ -13,6 +13,23 @@ const id = router.currentRoute.value.params.id;
 
 const user = store.users[id - 1]
 
+function addLike() {
+    let localLikes = localStorage.getItem('likes') || '[]';
+
+    try {
+        localLikes = JSON.parse(localLikes);
+    } catch (error) {
+        console.error('Ошибка', error);
+        localLikes = [];
+    }
+
+    localLikes.unshift(user.id);
+
+    localStorage.setItem('likes', JSON.stringify(localLikes));
+
+    console.log(localStorage.getItem('likes'));
+    console.log(user.id);
+}
 </script>
 <template>
     <div class="wrapper">
@@ -23,12 +40,14 @@ const user = store.users[id - 1]
                       :title="user.name"  
                       :charachteristic="user.charachteristic"  
                       :description="user.description"
+                      :likeMethod="addLike"
+                      :name="user.name"
             />
             <Footer />
         </div>
     </div>
 </template>
-<style lang="sass">
+<style lang="sass" scoped>
 .container 
     max-height: 100vh
 .bgHeader

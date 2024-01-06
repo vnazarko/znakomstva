@@ -9,7 +9,8 @@ export const useUserStore = defineStore('user', {
       name: 'Ваня Факов',
       date: '11.11.1111',
       gender: 'Мужчина'
-    }
+    },
+    likes: [],
   }),
   actions:  {
     changeName(name) {
@@ -20,6 +21,9 @@ export const useUserStore = defineStore('user', {
     },
     changeGender(gender) {
       this.info.gender = gender
+    },
+    addLike(likes) {
+      this.info.likes = likes
     }
   },
 })

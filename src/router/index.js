@@ -3,6 +3,7 @@ import UnLoginView from '../views/UnLoginView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import ListView from '../views/ListView.vue'
 import UserView from '../views/UserView.vue'
+import ChatView from '../views/ChatView.vue'
 import PageNotFound from '../views/PageNotFound.vue'
 
 const router = createRouter({
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/user/:id',
       name: 'user',
       component: UserView
+    },
+    {
+      path: '/chat/:id?',
+      name: 'chat',
+      component: ChatView
     },
     {
       path: '/:catchAll(.*)',

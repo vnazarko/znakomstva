@@ -27,6 +27,28 @@ onMounted(() => {
         slidesPerView.value = 3
     }
 })
+
+let like = []
+
+function addLike() {
+    let localLikes = localStorage.getItem('likes') || '[]';
+
+    try {
+        localLikes = JSON.parse(localLikes);
+    } catch (error) {
+        console.error('Ошибка при парсинге JSON:', error);
+        localLikes = [];
+    }
+
+    localLikes.unshift(this.id);
+
+    localStorage.setItem('likes', JSON.stringify(localLikes));
+
+    console.log(localStorage.getItem('likes'));
+    console.log(this.id);
+}
+
+
 </script>
 <template>
     <section class="list-of-users">
@@ -41,7 +63,7 @@ onMounted(() => {
                         </div>
                     </router-link>
                     <div class="button">
-                        <HelloButton />
+                        <HelloButton :id="slide.id" :likeMethod="addLike" :name="slide.name.split(' ')[0]" />
                     </div>
                 </div>
             </div>
@@ -59,7 +81,7 @@ onMounted(() => {
                         </div>
                     </router-link>
                     <div class="button">
-                        <HelloButton />
+                        <HelloButton :id="slide.id" :likeMethod="addLike" :name="slide.name.split(' ')[0]" />
                     </div>
                 </swiper-slide>
             </swiper>
