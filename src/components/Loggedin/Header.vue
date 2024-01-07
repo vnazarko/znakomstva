@@ -1,13 +1,34 @@
 <script setup>
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 import { useUserStore } from '@/stores/user';
 
 const store = useUserStore();
 
+const route = router.currentRoute.value.name;
+
+
+
+
 onMounted(() => {
     const name = localStorage.getItem('name');
+
+    let firstLink = document.getElementById('first-link');
+    let firstLinkBurger = document.getElementById('first-link-burger');
+    let secondLink = document.getElementById('second-link');
+    let secondLinkBurger = document.getElementById('second-link-burger');
+
     store.changeName(name);
+
+    if (route == 'list') {
+        firstLink.classList.add('active')
+        firstLinkBurger.classList.add('active')
+    } else if (route == 'chat') {
+        secondLink.classList.add('active')
+        secondLinkBurger.classList.add('active')
+    }
 })
 
 function toggleBurger() {
@@ -22,9 +43,9 @@ function toggleBurger() {
     <header class="header">
         <img src="@/assets/logo.svg" alt="" class="logo">
         <nav class="header_nav">
-            <router-link :to="{ name: 'list' }" class="header_nav__link">Анкеты</router-link>
-            <router-link to="/" class="header_nav__link">Сообщения</router-link>
-            <router-link to="/" class="header_nav__link">Подписка</router-link>
+            <router-link :to="{ name: 'list' }" class="header_nav__link" id="first-link">Анкеты</router-link>
+            <router-link :to="{ name: 'chat' }" class="header_nav__link" id="second-link">Сообщения</router-link>
+            <router-link to="/" class="header_nav__link" id="third__link">Подписка</router-link>
         </nav>
         <div class="side">
             <router-link to="/" class="user">
@@ -37,9 +58,9 @@ function toggleBurger() {
             <div class="burger-menu">
                 <div class="burger-menu__button" @click="toggleBurger"><span class="button__item"></span></div>
                 <div class="burger-menu_content">
-                    <router-link to="/" class="burger-menu_content__link">Анкеты</router-link>
-                    <router-link to="/" class="burger-menu_content__link">Сообщения</router-link>
-                    <router-link to="/" class="burger-menu_content__link">Подписка</router-link>
+                    <router-link :to="{ name: 'list' }" class="burger-menu_content__link" id="first-link-burger">Анкеты</router-link>
+                    <router-link :to="{ name: 'chat' }" class="burger-menu_content__link" id="second-link-burger">Сообщения</router-link>
+                    <router-link to="/" class="burger-menu_content__link" id="third-link-burger">Подписка</router-link>
                 </div>
             </div>
             <!-- ----------- -->
@@ -75,6 +96,16 @@ function toggleBurger() {
         &:hover 
             color: #fe6703
             transition: all .3s
+    .active 
+        color: #fe6703
+        position: relative
+        &::before 
+            position: absolute 
+            top: 68px !important
+            content: '' !important
+            width: 100% !important
+            height: 4px !important
+            background: var(--btn-primary, linear-gradient(90deg, #EE0979 0%, #FF6A00 100%))
     
 .user 
     height: 120px
@@ -195,6 +226,19 @@ function toggleBurger() {
                 &:hover 
                     color: #fe6703
                     transition: all .3s
+            .active
+                color: #FE6703
+                font-family: Rubik
+                font-style: normal
+                line-height: 150%
+                position: relative
+                &::before 
+                    position: absolute
+                    left: 100%
+                    content: ''
+                    height: 100% !important
+                    width: 4px !important
+                    background: var(--btn-primary, linear-gradient(90deg, #EE0979 0%, #FF6A00 100%))
         .opened
             transform: translate(-50%)
             left: 50%
@@ -205,6 +249,11 @@ function toggleBurger() {
             background: #2D1436
             transition: all .3s
             
+@media (max-width: 768px) 
+    .header_nav
+        .active::before
+            top: 42px !important
+
 @keyframes showBurger1
     0%
         transform: rotate(0deg)
